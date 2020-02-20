@@ -38,7 +38,7 @@
             android:id="@+id/txt_qtd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.qtd}"
+            android:text="@{String.valueOf(model.qtd)}"
             app:layout_constraintBottom_toTopOf="@+id/txt_nome"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"

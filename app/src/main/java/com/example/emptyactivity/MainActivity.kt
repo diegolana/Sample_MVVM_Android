@@ -13,15 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<TextView>(R.id.txt_hello).text = "Oi Mundo!"
-    }
-
-    private fun setupDataBinding() {
+        //findViewById<TextView>(R.id.txt_hello).text = "Hello world"
+        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val binding: MainDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.txtHello.text = "Aeee mundão véio"
+        binding.txtHello.text = "Binding text content"
+        binding.model = viewModel.myModel.value
+
     }
 
-    private fun setupViewModel() {
-        ViewModelProvider(this).get(MainViewModel::class.java)
-    }
 }

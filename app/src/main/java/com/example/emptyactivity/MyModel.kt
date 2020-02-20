@@ -1,7 +1,6 @@
 package com.example.emptyactivity
 
-object MyModel {
-    var name: String = "empty"
-    var qtd: Int = 0
-
-}
+class MyModel (
+    var name: String = "empty",
+    var qtd: Int = -1
+)

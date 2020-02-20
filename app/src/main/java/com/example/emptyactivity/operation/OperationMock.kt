@@ -15,7 +15,7 @@ class OperationMock() : OperationInterface {
         Thread(Runnable {
             Thread.sleep(1000)
             if (requestFake()) {
-                listener.onResponseSuccess("Funfou!")
+                listener.onResponseSuccess("Worked!")
             } else {
                 listener.onResponseFail(Exception("Mock Request Fail"))
             }

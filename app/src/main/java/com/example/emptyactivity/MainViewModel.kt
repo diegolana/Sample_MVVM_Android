@@ -9,7 +9,7 @@ import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 
-    val myModel : LiveData<MyModel> = MutableLiveData<MyModel>()
+    val myModel : LiveData<MyModel> = MutableLiveData<MyModel>(MyModel())
 
     private val operation:OperationInterface = OperationMock()
 
