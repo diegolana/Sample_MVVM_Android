@@ -16,8 +16,9 @@ class MainActivity : AppCompatActivity() {
         //findViewById<TextView>(R.id.txt_hello).text = "Hello world"
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val binding: MainDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.setLifecycleOwner(this)
         binding.txtHello.text = "Binding text content"
-        binding.model = viewModel.myModel.value
+        binding.viewModel = viewModel
 
     }
 
