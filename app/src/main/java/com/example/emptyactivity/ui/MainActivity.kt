@@ -2,7 +2,9 @@ package com.example.emptyactivity.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.emptyactivity.R
 import com.example.emptyactivity.databinding.MainDataBinding
@@ -20,7 +22,22 @@ class MainActivity : AppCompatActivity() {
         binding.setLifecycleOwner(this)
         binding.txtHello.text = "Binding text content"
         binding.viewModel = viewModel
+        setupErrorObserver(viewModel)
+    }
 
+    private fun setupErrorObserver(viewModel : MainViewModel) {
+        viewModel.requestException.observe(this, Observer {exception ->
+            exception?.let {
+                val message : String = it.cause?.message.let { return@let (it  ?: "Unknown error")}
+                viewModel.requestException.setValue(null)
+                showErrorDialog(message) }
+        })
+    }
+
+    private fun showErrorDialog(message : String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setNeutralButton("OK",null)
+        builder.setMessage(message).show()
     }
 
 }

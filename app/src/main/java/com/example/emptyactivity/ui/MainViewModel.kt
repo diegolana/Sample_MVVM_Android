@@ -11,9 +11,11 @@ import java.lang.Exception
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    var qtdLoading: MutableLiveData<Int> = MutableLiveData<Int>(0)
+    var qtdLoading = MutableLiveData<Int>(0)
 
-    val myModel : MutableLiveData<MyModel> = MutableLiveData<MyModel>(MyModel())
+    val myModel = MutableLiveData<MyModel>(MyModel())
+
+    var requestException = MutableLiveData<Exception?>(null)
 
     private var operation:OperationInterface? = null
 
@@ -25,8 +27,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
         }
         override fun onResponseFail(exception: Exception) {
-            val message : String = exception.message.let { return@let (it  ?: "unknown error")}
-            myModel.postValue(MyModel(message, 0))
+            requestException.postValue(exception)
+            myModel.postValue(MyModel("----", 0))
             qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
         }
     }
