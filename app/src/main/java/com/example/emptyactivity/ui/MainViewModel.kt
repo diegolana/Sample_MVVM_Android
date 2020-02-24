@@ -1,15 +1,17 @@
-package com.example.emptyactivity
+package com.example.emptyactivity.ui
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.emptyactivity.model.MyModel
 import com.example.emptyactivity.operation.OperationInterface
 import com.example.emptyactivity.operation.OperationMock
 import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 
-    val myModel : MutableLiveData<MyModel> = MutableLiveData<MyModel>(MyModel())
+    val myModel : MutableLiveData<MyModel> = MutableLiveData<MyModel>(
+        MyModel()
+    )
 
     private val operation:OperationInterface = OperationMock()
 

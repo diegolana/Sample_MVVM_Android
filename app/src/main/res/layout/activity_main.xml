@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="MainDataBinding">
-        <variable name="viewModel" type="com.example.emptyactivity.MainViewModel"/>
+        <variable name="viewModel" type="com.example.emptyactivity.ui.MainViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

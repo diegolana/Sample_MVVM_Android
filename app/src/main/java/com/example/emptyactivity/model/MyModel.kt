@@ -1,4 +1,4 @@
-package com.example.emptyactivity
+package com.example.emptyactivity.model
 
 class MyModel (
     var name: String = "empty",
