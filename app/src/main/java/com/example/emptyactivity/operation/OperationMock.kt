@@ -1,11 +1,12 @@
 package com.example.emptyactivity.operation
 
+import android.content.Context
 import java.lang.Exception
 import kotlin.random.Random
 
 class OperationMock() : OperationInterface {
 
-    override fun prepare() {
+    override fun prepare(context: Context) {
         //TODO("not implemented")
     }
 

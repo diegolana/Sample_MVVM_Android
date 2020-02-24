@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //findViewById<TextView>(R.id.txt_hello).text = "Hello world"
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val binding: MainDataBinding = DataBindingUtil.setContentView(this,
             R.layout.activity_main
