@@ -9,6 +9,8 @@ import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 
+    var qtdLoading: MutableLiveData<Int> = MutableLiveData<Int>(0)
+
     val myModel : MutableLiveData<MyModel> = MutableLiveData<MyModel>(
         MyModel()
     )
@@ -20,15 +22,17 @@ class MainViewModel : ViewModel() {
     private val operationListener = object : OperationInterface.Listener {
         override fun onResponseSuccess(response: String) {
             myModel.postValue(MyModel("Updated", 22))
+            qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
         }
         override fun onResponseFail(exception: Exception) {
             myModel.postValue(MyModel("ERROR", 11))
+            qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
         }
     }
 
     fun requestData() {
+        qtdLoading.value = qtdLoading?.value?.let { return@let it + 1 }
         operation.request(REQUEST_URL, operationListener)
     }
-
 
 }
