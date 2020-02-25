@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="MainDataBinding">
+    <data class="ListViewDataBinding">
         <import type="android.view.View"/>
-        <variable name="viewModel" type="com.example.emptyactivity.ui.MainViewModel"/>
+        <variable name="viewModel" type="com.example.emptyactivity.ui.ListViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
-            android:onClick="@{v -> viewModel.requestData()}"
+            android:onClick="@{v -> viewModel.requestListData()}"
             android:text="Load"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_back"
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
-            android:onClick="@{v -> viewModel.requestData()}"
+            android:onClick="goBack"
             android:text="Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
