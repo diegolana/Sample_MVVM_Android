@@ -6,6 +6,7 @@
     <data class="ListViewDataBinding">
         <import type="android.view.View"/>
         <variable name="viewModel" type="com.example.emptyactivity.ui.ListViewModel"/>
+        <variable name="layoutLifecycleOwner" type="androidx.lifecycle.LifecycleOwner"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +24,20 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.emptyactivity.component.ListComponent
+            android:id="@+id/txt_nome"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            app:lifecycleOwner="@{layoutLifecycleOwner}"
+            app:list="@{viewModel.listItems}"
+            app:layout_constraintBottom_toTopOf="@+id/button_load"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tittle"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/list_item_cell"/>
 
         <Button
             android:id="@+id/button_load"

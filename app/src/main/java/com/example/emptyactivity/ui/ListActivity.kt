@@ -17,6 +17,7 @@ class ListActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         val binding: ListViewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_list)
         binding.setLifecycleOwner(this)
+        binding.layoutLifecycleOwner = this
         binding.viewModel = viewModel
     }
 
