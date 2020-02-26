@@ -35,9 +35,19 @@
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_hello"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
             app:layout_constraintVertical_bias="0.0"
             tools:text="content" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:imageGlide="@{viewModel.IMAGE_URL}"
+            app:layout_constraintBottom_toTopOf="@id/txt_nome"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_hello" />
 
         <Button
             android:id="@+id/button_load"

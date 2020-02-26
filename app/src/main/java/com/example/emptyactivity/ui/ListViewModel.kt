@@ -5,14 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.emptyactivity.model.ListItemModel
 
-class ListViewModel(application: Application) : AndroidViewModel(application) {
-
-    var qtdLoading = MutableLiveData<Int>(0)
+class ListViewModel(application: Application) : BaseViewModel(application) {
 
     var listItems = MutableLiveData<ArrayList<ListItemModel>>(ArrayList<ListItemModel>())
 
     fun requestListData() {
-        qtdLoading.setValue( qtdLoading?.value?.let { return@let it + 1 })
+        addLoading()
         Thread(Runnable {
             Thread.sleep(1000)
             var newList =  ArrayList<ListItemModel>()
@@ -21,7 +19,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
                 newList.add(ListItemModel("Item "+i, i))
             }
             listItems.postValue(newList)
-            qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
+            removeLoading()
         }).start()
     }
 }
