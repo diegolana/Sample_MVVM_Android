@@ -9,9 +9,7 @@ import com.example.emptyactivity.operation.OperationMock
 import com.example.emptyactivity.operation.OperationVolley
 import java.lang.Exception
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-    var qtdLoading = MutableLiveData<Int>(0)
+class MainViewModel(application: Application) : BaseViewModel(application) {
 
     val myModel = MutableLiveData<MyModel>(MyModel())
 
@@ -21,15 +19,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val REQUEST_URL = "https://www.google.com"
 
+    val IMAGE_URL = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+
     private val operationListener = object : OperationInterface.Listener {
         override fun onResponseSuccess(response: String) {
             myModel.postValue(MyModel(response, 1))
-            qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
+            removeLoading()
         }
         override fun onResponseFail(exception: Exception) {
             requestException.postValue(exception)
             myModel.postValue(MyModel("----", 0))
-            qtdLoading.postValue( qtdLoading?.value?.let { return@let it - 1 })
+            removeLoading()
         }
     }
 
@@ -43,7 +43,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun requestData() {
-        qtdLoading.value = qtdLoading?.value?.let { return@let it + 1 }
+        addLoading()
         operation?.request(REQUEST_URL, operationListener)
     }
 
